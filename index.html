@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+   <html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <!--=============== REMIXICONS - Insert link for icons ===============-->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.9.1/fonts/remixicon.css">
+
+      <!--=============== CSS ===============-->
+      <link rel="stylesheet" href="assets/css/styles.css">
+
+      <title>OTP Verification - Secure 6 Digit Code | Bedimcode</title>
+   </head>
+   <body>
+      <!--==================== OTP ====================-->
+      <section class="otp" id="otp">
+         <form action="" class="otp__form" id="otp-form">
+            <!-- Light that fills the border with each digit -->
+            <span class="otp__border" id="otp-border"></span>
+
+            <div class="otp__visual" id="otp-visual">
+               <img src="assets/img/padlock-img.png" alt="padlock image" class="otp__img" id="otp-img">
+
+               <!-- Status circle: verifying, verified and error -->
+               <div class="otp__status" id="otp-status">
+                  <span class="otp__ripple" id="otp-ripple"></span>
+
+                  <svg class="otp__ring" viewBox="0 0 128 128">
+                     <circle class="otp__ring-loader" id="otp-loader" cx="64" cy="64" r="63"/>
+                  </svg>
+
+                  <div class="otp__circle" id="otp-circle">
+                     <i class="ri-shield-keyhole-line otp__icon" id="otp-icon-verifying"></i>
+
+                     <svg class="otp__check" id="otp-icon-verified" viewBox="0 0 24 24">
+                        <path id="otp-check" d="M5 12.5L9.5 17L19 7.5"/>
+                     </svg>
+
+                     <i class="ri-lock-line otp__icon" id="otp-icon-error"></i>
+                  </div>
+               </div>
+            </div>
+
+            <h1 class="otp__title" id="otp-title">6 digit code</h1>
+            <p class="otp__description" id="otp-description">
+               Please enter 6 digit OTP verification code
+               sent to +1 (555) 123-4567
+            </p>
+
+            <div class="otp__inputs" id="otp-inputs">
+               <input type="text" inputmode="numeric" autocomplete="one-time-code" aria-label="Digit 1" class="otp__input">
+               <input type="text" inputmode="numeric" aria-label="Digit 2" class="otp__input">
+               <input type="text" inputmode="numeric" aria-label="Digit 3" class="otp__input">
+               <input type="text" inputmode="numeric" aria-label="Digit 4" class="otp__input">
+               <input type="text" inputmode="numeric" aria-label="Digit 5" class="otp__input">
+               <input type="text" inputmode="numeric" aria-label="Digit 6" class="otp__input">
+
+               <!-- Light that crosses the inputs while verifying -->
+               <span class="otp__scan" id="otp-scan"></span>
+            </div>
+
+            <!-- Error message -->
+            <div class="otp__error" id="otp-error">
+               <p class="otp__error-text">
+                  <i class="ri-error-warning-fill"></i>
+                  That code didn’t match. Try again.
+               </p>
+            </div>
+
+            <div class="otp__messages">
+               <p class="otp__resend" id="otp-resend">
+                  Having trouble?
+                  <button type="button" class="otp__button" id="otp-button">Resend code</button>
+                  <span id="otp-timer-text">in <span id="otp-timer">30</span> sec</span>
+               </p>
+
+               <!-- Redirecting seconds -->
+               <p class="otp__redirect" id="otp-redirect">
+                  Redirecting in
+                  <span class="otp__count"><span class="otp__count-text" id="otp-count">3</span></span>
+                  sec. <button type="button" class="otp__button" id="otp-continue">Continue now</button>
+               </p>
+            </div>
+         </form>
+         <p>Your OTP is: 123456</p>
+      </section>
+
+      <!--=============== GSAP ===============-->
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/gsap.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/SplitText.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/DrawSVGPlugin.min.js"></script>
+
+      <!--=============== MAIN JS ===============-->
+      <script src="assets/js/main.js"></script>
+   </body>
+</html>

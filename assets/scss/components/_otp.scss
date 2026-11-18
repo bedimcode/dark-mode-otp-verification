@@ -1,0 +1,351 @@
+/*=============== OTP ===============*/
+.otp{
+   /* Colors that change with each state */
+   --otp-color: var(--first-color);
+   --otp-color-light: var(--first-color-light);
+   --otp-glow: var(--first-color-alt);
+
+   position: relative;
+   min-height: 100vh;
+   display: grid;
+   place-items: center;
+   padding: 2rem 1rem;
+   overflow: hidden;
+
+   &::before,
+   &::after{
+      content: '';
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      background-color: var(--otp-glow);
+      border-radius: 50%;
+      filter: blur(60px);
+      transition: background-color 0.8s;
+   }
+   &::before{
+      top: calc(50% - 160px);
+      left: -120px;
+      opacity: 0.8;
+   }
+   &::after{
+      top: calc(50% - 240px);
+      right: -160px;
+      opacity: 0.6;
+   }
+   &__form{
+      position: relative;
+      z-index: 1;
+      isolation: isolate;
+      width: 100%;
+      max-width: 344px;
+      padding: 2rem 2rem 3.5rem;
+      border: 1px solid transparent;
+      border-radius: 1.5rem;
+      background: 
+            linear-gradient(var(--container-color), var(--container-color)) padding-box,
+            conic-gradient(
+            hsla(0, 0%, 100%, 0.4) 0deg,
+            hsla(0, 0%, 100%, 0.3) 14deg,
+            hsla(0, 0%, 100%, 0.12) 30deg,
+            hsla(0, 0%, 100%, 0.06) 37deg,
+            hsla(0, 0%, 100%, 0.12) 48deg,
+            hsla(0, 0%, 100%, 0.3) 70deg,
+            hsla(0, 0%, 100%, 0.4) 90deg,
+            hsla(0, 0%, 100%, 0.3) 110deg,
+            hsla(0, 0%, 100%, 0.12) 132deg,
+            hsla(0, 0%, 100%, 0.06) 143deg,
+            hsla(0, 0%, 100%, 0.12) 150deg,
+            hsla(0, 0%, 100%, 0.3) 166deg,
+            hsla(0, 0%, 100%, 0.4) 180deg,
+            hsla(0, 0%, 100%, 0.3) 194deg,
+            hsla(0, 0%, 100%, 0.12) 210deg,
+            hsla(0, 0%, 100%, 0.06) 217deg,
+            hsla(0, 0%, 100%, 0.12) 228deg,
+            hsla(0, 0%, 100%, 0.3) 250deg,
+            hsla(0, 0%, 100%, 0.4) 270deg,
+            hsla(0, 0%, 100%, 0.3) 290deg,
+            hsla(0, 0%, 100%, 0.12) 312deg,
+            hsla(0, 0%, 100%, 0.06) 323deg,
+            hsla(0, 0%, 100%, 0.12) 330deg,
+            hsla(0, 0%, 100%, 0.3) 346deg,
+            hsla(0, 0%, 100%, 0.4) 360deg
+         ) border-box;
+      box-shadow: 0 24px 48px hsla(0, 0%, 0%, 0.5);
+      text-align: center;
+      overflow: hidden;
+   }
+   &__img{
+      width: 120px;
+      margin: 0 auto 0.25rem;
+      mask-image: linear-gradient(to bottom,
+                  hsla(0, 0%, 0%) 60%,
+                  transparent 100%);
+   }
+   &__form{
+      &::before,
+      &::after{
+         content: '';
+         position: absolute;
+         background-color: var(--otp-glow);
+         border-radius: 50%;
+         z-index: -1;
+         transition: background-color 0.8s;
+      }
+      &::before{
+         width: 200px;
+         height: 200px;
+         top: 4.5rem;
+         right: -5rem;
+         filter: blur(40px);
+         opacity: 0.9;
+      }
+      &::after{
+         width: 264px;
+         height: 120px;
+         bottom: -4.5rem;
+         left: 2.5rem;
+         filter: blur(32px);
+         opacity: 0.8;
+      }
+   }
+   &__title{
+      font-size: var(--h1-font-size);
+      line-height: 150%;
+      margin-bottom: 0.5rem;
+   }
+   &__description{
+      font-size: var(--small-font-size);
+      line-height: 150%;
+      padding-inline: 1rem;
+      margin-bottom: 1.5rem;
+   }
+   &__input{
+      width: 40px;
+      height: 48px;
+      border: 1px solid transparent;
+      border-radius: 0.5rem;
+      background:
+         linear-gradient(var(--first-color-light), var(--first-color-light)) padding-box,
+         linear-gradient(to bottom,
+            hsla(0, 0%, 100%, 0.22),
+            hsla(0, 0%, 100%, 0.06),
+            hsla(0, 0%, 100%, 0.02)) border-box;
+      box-shadow: inset 0 -8px 16px hsla(231, 100%, 65%, 0.22),
+                  inset 0 1px 0 hsla(0, 0%, 100%, 0.1),
+                  0 6px 12px hsla(0, 0%, 0%, 0.5);
+      color: var(--title-color);
+      font-size: var(--h2-font-size);
+      font-weight: var(--font-bold);
+      text-align: center;
+      caret-color: var(--first-color);
+      transition: background 0.3s, box-shadow 0.3s;
+
+      &:focus{
+         background:
+            linear-gradient(var(--first-color-light), var(--first-color-light)) padding-box,
+            linear-gradient(var(--title-color), var(--title-color)) border-box;
+         box-shadow: inset 0 -8px 16px hsla(231, 100%, 65%, 0.22),
+                     inset 0 1px 0 hsla(0, 0%, 100%, 0.1),
+                     0 6px 12px hsla(0, 0%, 0%, 0.5),
+                     0 0 12px hsla(230, 100%, 70%, 0.25);
+      }
+   }
+   &__inputs{
+      position: relative;
+      display: flex;
+      justify-content: center;
+      column-gap: 0.5rem;
+      margin-bottom: 1.5rem;
+   }
+   &__button{
+      color: var(--title-color);
+      font-size: var(--small-font-size);
+
+      &:disabled{
+         cursor: default;
+      }
+   }
+   &__resend{
+      grid-area: 1 / 1;
+      color: var(--text-color-light);
+      font-size: var(--small-font-size);
+      line-height: 150%;
+   }
+}
+
+/*=============== OTP ANIMATION ===============*/
+.otp{
+   &__border{
+      --progress: 0%;
+
+      position: absolute;
+      inset: 0;
+      padding: 1.5px;
+      border-radius: calc(1.5rem - 1px);
+      background: conic-gradient(var(--otp-color) calc(var(--progress) - 4%), transparent var(--progress));
+      mask: linear-gradient(hsl(0, 0%, 0%) 0 0) content-box,
+            linear-gradient(hsl(0, 0%, 0%) 0 0);
+      mask-composite: exclude;
+      filter: drop-shadow(0 0 6px var(--otp-color));
+      pointer-events: none;
+   }
+   &__visual{
+      position: relative;
+      display: grid;
+      place-items: center;
+   }
+   &__status{
+      position: absolute;
+      inset: 0;
+      width: 128px;
+      height: 128px;
+      margin: auto;
+      border: 1px solid var(--otp-color);
+      border-radius: 50%;
+      background-color: var(--otp-color-light);
+      opacity: 0;
+      visibility: hidden;
+      transition: background-color 0.5s, border-color 0.5s;
+   }
+   &__ring{
+      position: absolute;
+      inset: -1px;
+      width: 128px;
+      height: 128px;
+      fill: none;
+      overflow: visible;
+   }
+   &__ring-loader{
+      stroke: var(--title-color);
+      stroke-width: 2;
+      stroke-linecap: round;
+   }
+   &__ripple,
+   &__circle{
+      position: absolute;
+      inset: 19px;
+      border-radius: 50%;
+   }
+   &__ripple{
+      border: 2px solid var(--otp-color);
+      opacity: 0;
+   }
+   &__circle{
+      background-color: var(--otp-color);
+      box-shadow: 0 8px 24px color-mix(in srgb, var(--otp-color) 45%, transparent),
+                  inset 0 2px 2px hsla(0, 0%, 100%, 0.35);
+      transition: background-color 0.5s, box-shadow 0.5s;
+   }
+   &__icon,
+   &__check{
+      position: absolute;
+      inset: 0;
+      width: 40px;
+      height: 40px;
+      margin: auto;
+      opacity: 0;
+      visibility: hidden;
+   }
+   &__icon{
+      display: grid;
+      place-items: center;
+      color: var(--title-color);
+      font-size: 2.5rem;
+   }
+   &__check{
+      fill: none;
+      stroke: var(--title-color);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+   }
+   &__scan{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 48px;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, hsla(0, 0%, 100%, 0.35), transparent);
+      filter: blur(4px);
+      opacity: 0;
+      pointer-events: none;
+   }
+   &__error{
+      height: 0;
+      overflow: hidden;
+      opacity: 0;
+   }
+   &__error-text{
+      display: inline-flex;
+      align-items: center;
+      column-gap: 0.5rem;
+      color: var(--error-color);
+      font-size: var(--small-font-size);
+      line-height: 150%;
+      padding-bottom: 0.5rem;
+
+      & i{
+         font-size: 1rem;
+      }
+   }
+   &__messages{
+      display: grid;
+   }
+   &__redirect{
+      grid-area: 1 / 1;
+      color: var(--text-color-light);
+      font-size: var(--small-font-size);
+      line-height: 150%;
+      opacity: 0;
+      visibility: hidden;
+   }
+   &__count{
+      display: inline-flex;
+      overflow: hidden;
+      vertical-align: bottom;
+   }
+   &__count-text{
+      display: inline-block;
+   }
+}
+
+/*=============== OTP STATES ===============*/
+/* Verified colors */
+.otp-verified{
+   --otp-color: var(--success-color);
+   --otp-color-light: var(--success-color-light);
+   --otp-glow: var(--success-color-light);
+}
+
+/* Error colors */
+.otp-error{
+   --otp-color: var(--error-color);
+   --otp-color-light: var(--error-color-light);
+   --otp-glow: var(--error-color-light);
+}
+
+/* Each input changes color with a wave effect (class added with JS) */
+.otp__input.input-success{
+   background:
+      linear-gradient(var(--success-color-alt), var(--success-color-alt)) padding-box,
+      linear-gradient(to bottom,
+         hsla(0, 0%, 100%, 0.45),
+         hsla(0, 0%, 100%, 0.12),
+         hsla(0, 0%, 100%, 0.04)) border-box;
+   box-shadow: inset 0 -8px 16px hsla(0, 0%, 100%, 0.25),
+               inset 0 1px 0 hsla(0, 0%, 100%, 0.3),
+               0 6px 16px hsla(152, 62%, 46%, 0.35);
+}
+
+/* Error input with the line under the number */
+.otp__input.input-error{
+   background:
+      linear-gradient(var(--error-color), var(--error-color)) center 34px / 12px 2px no-repeat padding-box,
+      linear-gradient(var(--error-color-light), var(--error-color-light)) padding-box,
+      linear-gradient(var(--error-color), var(--error-color)) border-box;
+   box-shadow: inset 0 -8px 16px hsla(0, 82%, 64%, 0.25),
+               inset 0 1px 0 hsla(0, 0%, 100%, 0.08),
+               0 0 12px hsla(0, 82%, 64%, 0.25);
+   color: var(--error-color);
+}

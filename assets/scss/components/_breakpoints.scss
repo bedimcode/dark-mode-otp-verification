@@ -1,0 +1,45 @@
+/*=============== BREAKPOINTS ===============*/
+/* For small devices <> */
+@media (width <= 340px){
+   .otp{
+      &__form{
+         padding-inline: 1rem;
+      }
+      &__description{
+         padding-inline: 0;
+      }
+      &__input{
+         width: 32px;
+         height: 40px;
+
+         &.input-error{
+            background-position: center 28px, 0 0, 0 0;
+         }
+      }
+   }
+}
+
+/* For large devices <> */
+@media (width >= 1150px){
+   .otp{
+      &::before,
+      &::after{
+         width: 560px;
+         height: 560px;
+         filter: blur(100px);
+      }
+      &::before{
+         top: calc(50% - 248px);
+         left: calc(50% - 468px);
+      }
+      &::after{
+         top: calc(50% - 352px);
+         left: calc(50% - 92px);
+         right: auto;
+      }
+      &__form{
+         max-width: 376px;
+         padding-inline: 3rem;
+      }
+   }
+}
